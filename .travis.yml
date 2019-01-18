@@ -9,7 +9,7 @@ script:
   - docker run infopcn/docker-react npm run test -- --coverage
 
 deploy:
-  provider: elacticbeanstalk
+  provider: elasticbeanstalk
   region: "eu-west-1"
   app: "TestLudo"
   env: "Testludo-env"
