@@ -6,4 +6,20 @@ before_install:
   - docker build  -t infopcn/docker-react -f Dockerfile.dev .
 
 script:
-  - 
+  - docker run infopcn/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elacticbeanstalk
+  region: "eu-west-1"
+  app: "TestLudo"
+  env: "Testludo-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-152957555771"
+  bucket_path: "TestLudo"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
+
+
+  
